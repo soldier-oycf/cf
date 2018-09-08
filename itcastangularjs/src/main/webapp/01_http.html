@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>angularJS 测试</title>
+    <script src="js/angular.min.js"></script>
+    <script type="text/javascript">
+
+        //创建一个模块
+       var app = angular.module("app",[]);
+        app.controller("myrepent",function ($scope,$http) {
+            $scope.findPresons=function(){
+                $http.get("data.json")
+                    .success(function (presons) {
+                        $scope.presons=presons;
+                    }).error(function (presons) {
+                    alert(presons);
+                });
+            }
+        });
+
+
+    </script>
+</head>
+<!--进行初始化加载-->
+<body ng-app="app" ng-controller="myrepent" ng-init="findPresons()">
+
+    迭代遍历数组:<br/>
+    <div ng-repeat="num in list">
+        {{num}}
+    </div>
+
+    迭代集合:<br/>
+    <div>
+        <table>
+
+            <tr>
+                <td>id</td>
+                <td>name</td>
+
+            </tr>
+            <tr ng-repeat="p in presons">
+                <td>{{p.id}}</td>
+                <td>{{p.name}}</td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+
+</body>
+</html>

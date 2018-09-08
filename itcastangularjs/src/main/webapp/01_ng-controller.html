@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>angularJS 测试</title>
+    <script src="js/angular.min.js"></script>
+    <script type="text/javascript">
+
+        //创建有一个angular模块
+        //参数一:模块名称
+        //参数二:要加载的其他模块列表,如果没有也的加入这个空数组,不加在表示或骗取一个模块
+        var app = angular.module("app",[]);
+        //注册处理器,名称为没有Controller, 注入 @scopo上下文服务
+        app.controller("mycontroller",function ($scope) {
+            $scope.add = function () {
+                return parseInt($scope.x)+parseInt($scope.y);
+            }
+        })
+
+    </script>
+</head>
+<!--进行初始化加载-->
+<body ng-app="app" ng-controller="mycontroller">
+<!--{{100+100}}-->
+
+<!--模型绑定-->
+x:<input ng-model="x"/>
+<br/>
+y:<input ng-model="y"/>
+<br/>
+x+y= {{add()}}
+</body>
+</html>
