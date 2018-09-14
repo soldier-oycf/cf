@@ -1,5 +1,5 @@
 //定义业务服务
-app.service("specificationOptionService",function ($http) {
+pinyougou.service("specificationOptionService",function ($http) {
     //加载列表数据
     this.findAll = function(){
         return $http.get("../specificationOption/findAll.do");
@@ -9,8 +9,8 @@ app.service("specificationOptionService",function ($http) {
         return $http.get("../specificationOption/findPage.do?page=" + page + "&rows=" + rows);
     };
 
-    this.add = function (entity) {
-        return $http.post("../specificationOption/add.do",entity);
+    this.save = function (entity) {
+        return $http.post("../specificationOption/save.do",entity);
     };
 
     this.update = function (entity) {

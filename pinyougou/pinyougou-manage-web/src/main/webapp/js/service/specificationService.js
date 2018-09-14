@@ -1,5 +1,5 @@
 //定义业务服务
-app.service("specificationService",function ($http) {
+pinyougou.service("specificationService",function ($http) {
     //加载列表数据
     this.findAll = function(){
         return $http.get("../specification/findAll.do");
@@ -9,8 +9,8 @@ app.service("specificationService",function ($http) {
         return $http.get("../specification/findPage.do?page=" + page + "&rows=" + rows);
     };
 
-    this.add = function (entity) {
-        return $http.post("../specification/add.do",entity);
+    this.save = function (entity) {
+        return $http.post("../specification/save.do",entity);
     };
 
     this.update = function (entity) {
@@ -21,8 +21,8 @@ app.service("specificationService",function ($http) {
         return $http.get("../specification/findOne.do?id=" + id);
     };
 
-    this.delete = function (selectedIds) {
-        return $http.get("../specification/delete.do?ids=" + selectedIds);
+    this.delete = function (ids) {
+        return $http.get("../specification/delete.do?ids=" + ids);
     };
 
     this.search = function (page, rows, searchEntity) {
@@ -31,7 +31,12 @@ app.service("specificationService",function ($http) {
     };
     //查询规格列表
     this.selectOptionList = function () {
-        return $http.get("../specification/selectOptionList.do");
+        return $http.get("../specification/findSpecification.do");
     };
+
+    /*//查询规格下拉列表
+    this.selectOptionList = function () {
+        return $http.get("../specification/findSpecification.do");
+    }*/
 
 });

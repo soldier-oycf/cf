@@ -1,5 +1,5 @@
 //定义业务服务
-app.service("typeTemplateService",function ($http) {
+pinyougou.service("typeTemplateService",function ($http) {
     //加载列表数据
     this.findAll = function(){
         return $http.get("../typeTemplate/findAll.do");
@@ -29,4 +29,9 @@ app.service("typeTemplateService",function ($http) {
         return $http.post("../typeTemplate/search.do?page=" + page + "&rows=" + rows, searchEntity);
 
     };
+
+
+
+
+
 });

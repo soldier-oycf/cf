@@ -1,4 +1,4 @@
-app.controller("typeTemplateController", function ($scope, $controller, typeTemplateService, brandService, specificationService) {
+pinyougou.controller("typeTemplateController", function ($scope, $controller, typeTemplateService, brandService, specificationService) {
 
     //加载baseController控制器并传入1个作用域，与angularJs运行时作用域相同.
     $controller("baseController",{$scope:$scope});
@@ -27,8 +27,9 @@ app.controller("typeTemplateController", function ($scope, $controller, typeTemp
         object.success(function (response) {
             if(response.success){
                 $scope.reloadList();
+                alert(response.msg);
             } else {
-                alert(response.message);
+                alert(response.msg);
             }
         });
     };
@@ -39,24 +40,25 @@ app.controller("typeTemplateController", function ($scope, $controller, typeTemp
             //转换品牌列表
             $scope.entity.brandIds = JSON.parse($scope.entity.brandIds);
             //转换规格列表
-            $scope.entity.specIds = JSON.parse($scope.entity.specIds);
+           // $scope.entity.specIds = JSON.parse($scope.entity.specIds);
             //转换拓展属性列表
             $scope.entity.customAttributeItems = JSON.parse($scope.entity.customAttributeItems);
         });
     };
 
     $scope.delete = function () {
-        if($scope.selectedIds.length < 1){
+        if($scope.ids.length < 1){
             alert("请先选择要删除的记录");
             return;
         }
         if(confirm("确定要删除已选择的记录吗")){
-            typeTemplateService.delete($scope.selectedIds).success(function (response) {
+            typeTemplateService.delete($scope.ids).success(function (response) {
                 if(response.success){
                     $scope.reloadList();
-                    $scope.selectedIds = [];
+                    $scope.ids = [];
+                    alert("已删除");
                 } else {
-                    alert(response.message);
+                    alert(response.msg);
                 }
             });
         }
@@ -74,7 +76,7 @@ app.controller("typeTemplateController", function ($scope, $controller, typeTemp
     //查询品牌列表
     $scope.brandList = {data:[]};//初始化
     $scope.findBrandList = function(){
-        brandService.selectOptionList().success(function (response) {
+        brandService.findBrandLists().success(function (response) {
             $scope.brandList.data = response;
         });
     };

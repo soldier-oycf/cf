@@ -2,11 +2,13 @@ package com.pinyougou.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+
 import com.pinyougou.service.BaseService;
 import com.pinyougou.vo.PageResult;
-import com.sun.org.apache.bcel.internal.generic.NEW;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import tk.mybatis.mapper.common.Mapper;
+
 
 import java.io.Serializable;
 import java.util.List;
@@ -72,7 +74,7 @@ public abstract class BaseServiceImpl<T>  implements BaseService<T>{
     }
 
     @Override
-    public void deletes(Serializable[] ids) {
+    public void deletes(Long[] ids) {
         //批量进行删除数据使用循环方式
         if(ids != null && ids.length > 0){
             for (Serializable id : ids){

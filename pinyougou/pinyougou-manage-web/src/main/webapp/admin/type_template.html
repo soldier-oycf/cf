@@ -78,10 +78,10 @@
 			                          </tr>
 			                      </thead>
 			                      <tbody>
-			                          <tr ng-repeat="entity in list">
-			                              <td><input type="checkbox" ng-click="updateSelection($event, entity.id)"></td>
+			                          <tr ng-repeat="entity in list">{{ids}}
+			                              <td><input type="checkbox" ng-click="updaeSelections($event, entity.id)"></td>
 				                          <td>{{entity.id}}</td>
-									      <td>{{entity.name}}</td>
+									      <td>{{entity.name}}</td>specIds
 									      <td>{{jsonToString(entity.brandIds, 'text')}}</td>
 									      <td>{{jsonToString(entity.specIds, 'text')}}</td>
 									      <td>{{jsonToString(entity.customAttributeItems, 'text')}}</td>
@@ -122,15 +122,16 @@
 		      		<td><input ng-model="entity.name" class="form-control" placeholder="模板名称">  </td>
 		      	</tr>			   
 		      	<tr>
-		      		<td>关联品牌</td>
-		      		<td>
+		      		<td>关联品牌</td>关联品牌{{brandList}}
+		      		<td><!--brandList-->{{entity.brandIds}}
 		      			<input select2 select2-model="entity.brandIds" config="brandList" multiple placeholder="选择品牌（可多选）" class="form-control" type="text"/>
 		      		</td>
 		      	</tr>
 		      	<tr>
-		      		<td>关联规格</td>
-		      		<td>
-		<input select2 select2-model="entity.specIds" config="specificationList" multiple placeholder="选择规格（可多选）" class="form-control" type="text"/>
+		      		<td>关联规格</td>关联规格{{specificationList}} <!--{data:[{id:'1',text:'联想'},{id:'2',text:'华为'}]}--->
+		      		<td>{{entity.specIds}}
+		<input select2 select2-model="entity.specIds"
+			   config="specificationList" multiple placeholder="选择规格（可多选）" class="form-control" type="text"/>
 		      		</td>
 		      	</tr>	
 		      	

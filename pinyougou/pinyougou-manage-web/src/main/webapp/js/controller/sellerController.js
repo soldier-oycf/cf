@@ -1,4 +1,4 @@
-app.controller("sellerController", function ($scope, $controller, sellerService) {
+pinyougou.controller("sellerController", function ($scope, $controller, sellerService) {
 
     //加载baseController控制器并传入1个作用域，与angularJs运行时作用域相同.
     $controller("baseController",{$scope:$scope});
@@ -83,6 +83,7 @@ app.controller("sellerController", function ($scope, $controller, sellerService)
         sellerService.update(updateData).success(function (response) {
             if(response.success){
                 $scope.reloadList();
+
             } else {
                 alert(response.message);
             }

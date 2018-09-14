@@ -1,4 +1,4 @@
-app.controller("specificationController", function ($scope, $controller, specificationService) {
+pinyougou.controller("specificationController", function ($scope, $controller, specificationService) {
 
     //加载baseController控制器并传入1个作用域，与angularJs运行时作用域相同.
     $controller("baseController",{$scope:$scope});
@@ -22,13 +22,14 @@ app.controller("specificationController", function ($scope, $controller, specifi
         if($scope.entity.specification.id != null){//更新
             object = specificationService.update($scope.entity);
         } else {//新增
-            object = specificationService.add($scope.entity);
+            object = specificationService.save($scope.entity);
         }
         object.success(function (response) {
             if(response.success){
                 $scope.reloadList();
+                alert(response.msg);
             } else {
-                alert(response.message);
+                alert(response.msg);
             }
         });
     };
@@ -40,17 +41,18 @@ app.controller("specificationController", function ($scope, $controller, specifi
     };
 
     $scope.delete = function () {
-        if($scope.selectedIds.length < 1){
+        if($scope.ids.length < 1){
             alert("请先选择要删除的记录");
             return;
         }
         if(confirm("确定要删除已选择的记录吗")){
-            specificationService.delete($scope.selectedIds).success(function (response) {
+            specificationService.delete($scope.ids).success(function (response) {
                 if(response.success){
                     $scope.reloadList();
-                    $scope.selectedIds = [];
+                    $scope.ids = [];
+                    alert(response.msg)
                 } else {
-                    alert(response.message);
+                    alert(response.msg);
                 }
             });
         }

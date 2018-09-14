@@ -26,10 +26,7 @@ public interface BaseService<T> {
         void update(T t);
 
     //批量删除
-        void  deletes(Serializable[] ids);
-
-
-
+        void  deletes(Long[] ids);
 
 
 }

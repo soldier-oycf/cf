@@ -1,5 +1,5 @@
 //定义业务服务
-app.service("sellerService",function ($http) {
+pinyougou.service("sellerService",function ($http) {
     //加载列表数据
     this.findAll = function(){
         return $http.get("../seller/findAll.do");

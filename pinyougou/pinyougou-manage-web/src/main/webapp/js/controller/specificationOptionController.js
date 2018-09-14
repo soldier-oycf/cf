@@ -1,4 +1,4 @@
-app.controller("specificationOptionController", function ($scope, $controller, specificationOptionService) {
+pinyougou.controller("specificationOptionController", function ($scope, $controller, specificationOptionService) {
 
     //加载baseController控制器并传入1个作用域，与angularJs运行时作用域相同.
     $controller("baseController",{$scope:$scope});
@@ -22,7 +22,7 @@ app.controller("specificationOptionController", function ($scope, $controller, s
         if($scope.entity.id != null){//更新
             object = specificationOptionService.update($scope.entity);
         } else {//新增
-            object = specificationOptionService.add($scope.entity);
+            object = specificationOptionService.save($scope.entity);
         }
         object.success(function (response) {
             if(response.success){
